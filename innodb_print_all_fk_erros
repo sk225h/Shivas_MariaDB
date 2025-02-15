@@ -1,0 +1,104 @@
+SET @start_global_value = @@global.innodb_print_all_fk_errors;
+SELECT @start_global_value;
+@start_global_value
+0
+Valid values are 'ON' and 'OFF' 
+SELECT @@global.innodb_print_all_fk_errors in (0, 1);
+@@global.innodb_print_all_fk_errors in (0, 1)
+1
+SELECT @@global.innodb_print_all_fk_errors;
+@@global.innodb_print_all_fk_errors
+0
+SELECT @@session.innodb_print_all_fk_errors;
+ERROR HY000: Variable 'innodb_print_all_fk_errors' is a GLOBAL variable
+SHOW global variables LIKE 'innodb_print_all_fk_errors';
+Variable_name	Value
+innodb_print_all_fk_errors	OFF
+SHOW session variables LIKE 'innodb_print_all_fk_errors';
+Variable_name	Value
+innodb_print_all_fk_errors	OFF
+SELECT * FROM information_schema.global_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	OFF
+SELECT * FROM information_schema.session_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	OFF
+SET global innodb_print_all_fk_errors='OFF';
+SELECT @@global.innodb_print_all_fk_errors;
+@@global.innodb_print_all_fk_errors
+0
+SELECT * FROM information_schema.global_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	OFF
+SELECT * FROM information_schema.session_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	OFF
+SET @@global.innodb_print_all_fk_errors=1;
+SELECT @@global.innodb_print_all_fk_errors;
+@@global.innodb_print_all_fk_errors
+1
+SELECT * FROM information_schema.global_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	ON
+SELECT * FROM information_schema.session_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	ON
+SET global innodb_print_all_fk_errors=0;
+SELECT @@global.innodb_print_all_fk_errors;
+@@global.innodb_print_all_fk_errors
+0
+SELECT * FROM information_schema.global_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	OFF
+SELECT * FROM information_schema.session_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	OFF
+SET @@global.innodb_print_all_fk_errors='ON';
+SELECT @@global.innodb_print_all_fk_errors;
+@@global.innodb_print_all_fk_errors
+1
+SELECT * FROM information_schema.global_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	ON
+SELECT * FROM information_schema.session_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	ON
+SET session innodb_print_all_fk_errors='OFF';
+ERROR HY000: Variable 'innodb_print_all_fk_errors' is a GLOBAL variable and should be set with SET GLOBAL
+SET @@session.innodb_print_all_fk_errors='ON';
+ERROR HY000: Variable 'innodb_print_all_fk_errors' is a GLOBAL variable and should be set with SET GLOBAL
+SET global innodb_print_all_fk_errors=1.1;
+ERROR 42000: Incorrect argument type to variable 'innodb_print_all_fk_errors'
+SET global innodb_print_all_fk_errors=1e1;
+ERROR 42000: Incorrect argument type to variable 'innodb_print_all_fk_errors'
+SET global innodb_print_all_fk_errors=2;
+ERROR 42000: Variable 'innodb_print_all_fk_errors' can't be set to the value of '2'
+SET global innodb_print_all_fk_errors=-3;
+ERROR 42000: Variable 'innodb_print_all_fk_errors' can't be set to the value of '-3'
+SELECT @@global.innodb_print_all_fk_errors;
+@@global.nnodb_print_all_fk_errors
+1
+SELECT * FROM information_schema.global_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	ON
+SELECT * FROM information_schema.session_variables 
+WHERE variable_name='innodb_print_all_fk_errors';
+VARIABLE_NAME	VARIABLE_VALUE
+INNODB_PRINT_ALL_FK_ERRORS	ON
+SET global innodb_print_all_fk_errors='AUTO';
+ERROR 42000: Variable 'innodb_print_all_fk_errors' can't be set to the value of 'AUTO'
+SET @@global.innodb_print_all_fk_errors = @start_global_value;
+SELECT @@global.innodb_print_all_fk_errors;
+@@global.innodb_print_all_fk_errors
+0
